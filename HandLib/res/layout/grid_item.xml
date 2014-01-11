@@ -41,6 +41,19 @@
             android:src="@drawable/kabita"
             tools:ignore="ContentDescription" />
 
+        <Button
+            android:id="@+id/bDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/grid_item_img"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/custom_btn"
+            android:text="Download" 
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:padding="3dp"
+             android:focusable="false"/>
+
     </RelativeLayout>
 
 </FrameLayout>

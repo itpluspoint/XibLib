@@ -21,11 +21,13 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -91,11 +93,9 @@ public class BookGridFragment extends Fragment {
 					return false;
 				Map<String, String> tran = listTrans.get(position);
 
-				
-					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));
+				showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));
 
-					updateDataBase();
-			
+				updateDataBase();
 
 				return false;
 			}
@@ -190,6 +190,7 @@ public class BookGridFragment extends Fragment {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 
+			final int _position = position;
 			Map<String, String> tran = listTrans.get(position);
 
 			if (convertView == null) {
@@ -205,6 +206,26 @@ public class BookGridFragment extends Fragment {
 			img.setImageResource(mImgRes);
 			first_line.setText(tran.get("book_name"));
 			sec_line.setText(tran.get("book_abbr"));
+			Button btn_download = (Button) convertView
+					.findViewById(R.id.bDownload);
+			btn_download.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					/*Toast.makeText(getActivity(),
+							"Item Clicked is" + _position, Toast.LENGTH_LONG)
+							.show();*/
+					
+					Map<String, String> tran = listTrans.get(_position);
+
+					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));
+
+					updateDataBase();
+				}
+
+			});
+
 			return convertView;
 		}
 
@@ -273,5 +294,4 @@ public class BookGridFragment extends Fragment {
 		return haveConnectedWifi || haveConnectedMobile;
 	}
 
-	
 }

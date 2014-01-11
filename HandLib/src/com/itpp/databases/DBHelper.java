@@ -1,4 +1,4 @@
-package com.itpp.handlib;
+package com.itpp.databases;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

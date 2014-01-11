@@ -1,4 +1,4 @@
-package com.itpp.handlib;
+package com.itpp.json;
 
 import java.io.BufferedReader;
 import java.io.IOException;

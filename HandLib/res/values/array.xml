@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="color_names">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>White</item>
+        <item>Black</item>
+    </string-array>
+    
+    <string-array name="birds">
+        <item>magazines</item>
+        <item>kabita</item>
+        <item>story</item>
+        <item>jibanica</item>
+       
+    </string-array>
+
+    <string-array name="birds_img">
+        <item>@drawable/magazines</item>
+        <item>@drawable/kabita</item>
+        <item>@drawable/story</item>
+        <item>@drawable/jibanica</item>
+    </string-array>
+
+</resources>

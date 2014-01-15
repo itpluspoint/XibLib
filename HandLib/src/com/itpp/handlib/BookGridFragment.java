@@ -40,6 +40,7 @@ public class BookGridFragment extends Fragment {
 	private int mPos = -1;
 	private int mImgRes;
 	String _id = null;
+	Button btn_download;
 
 	public BookGridFragment() {
 	}
@@ -127,6 +128,7 @@ public class BookGridFragment extends Fragment {
 								if (isNetworkAvailable()) {
 									new Utility(getActivity(), mRem_url,
 											mLoc_url).execute();
+									btn_download.setEnabled(false);
 								} else {
 									Toast.makeText(getActivity(),
 											"Error in Network Connectivity.!!",
@@ -208,17 +210,21 @@ public class BookGridFragment extends Fragment {
 			img.setImageResource(mImgRes);
 			first_line.setText(tran.get("book_name"));
 			sec_line.setText(tran.get("book_abbr"));
-			Button btn_download = (Button) convertView
-					.findViewById(R.id.bDownload);
+			btn_download = (Button) convertView.findViewById(R.id.bDownload);
+			// btn_download.setVisibility(Utility.isBookDownloaded(tran.get("loc_url"))?View.GONE:View.VISIBLE);
+			btn_download.setEnabled(!Utility.isBookDownloaded(tran
+					.get("loc_url")));
+
 			btn_download.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					/*Toast.makeText(getActivity(),
-							"Item Clicked is" + _position, Toast.LENGTH_LONG)
-							.show();*/
-					
+					/*
+					 * Toast.makeText(getActivity(), "Item Clicked is" +
+					 * _position, Toast.LENGTH_LONG) .show();
+					 */
+
 					Map<String, String> tran = listTrans.get(_position);
 
 					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));

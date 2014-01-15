@@ -35,7 +35,7 @@ public class Utility extends AsyncTask<String, String, String> {
 		pDialog = new ProgressDialog(mContext);
 		pDialog.setMessage("Downloading... Please wait...");
 		pDialog.setIndeterminate(false);
-		//pDialog.setCancelable(false);
+		// pDialog.setCancelable(false);
 		pDialog.show();
 	}
 
@@ -104,5 +104,12 @@ public class Utility extends AsyncTask<String, String, String> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public static boolean isBookDownloaded(String url) {
+		// TODO Auto-generated method stub
+		File file = new File(url);
+
+		return file.exists() ? true : false;
 	}
 }

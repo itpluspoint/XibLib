@@ -81,7 +81,7 @@ public static String myCustTitle="My Library";
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			toggle();
-		case R.id.menu_about:
+		//case R.id.menu_about:
 			
 		}
 		return super.onOptionsItemSelected(item);

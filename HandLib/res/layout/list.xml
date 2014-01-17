@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="#1C1C1C">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#CC1C1C1C"
+        android:background="@drawable/op_01"
         android:gravity="center"
         android:text="Category"
         android:textColor="#ffffff"
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/list_padding"
-        android:paddingRight="@dimen/list_padding" />
+        android:paddingRight="@dimen/list_padding" 
+        android:background="#1C1C1C"/>
 
 </LinearLayout>

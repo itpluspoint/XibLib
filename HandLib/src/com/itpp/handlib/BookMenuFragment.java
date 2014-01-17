@@ -5,10 +5,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.itpp.databases.DBHelper;
+import com.itpp.handlib.R.drawable;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -24,11 +28,12 @@ public class BookMenuFragment extends ListFragment {
 	ArrayList<Map<String, String>> listTrans = new ArrayList<Map<String, String>>();
 	SimpleAdapter adapter;
 	String title="";
+	int[] image;
 
 	public BookMenuFragment(Context context) {
 		// TODO Auto-generated constructor stub
 		mContext = context;
-
+		
 	}
 
 	public BookMenuFragment() {
@@ -39,6 +44,7 @@ public class BookMenuFragment extends ListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+	//	setBackgroundColor(Color.parseColor("#4a3826"))
 		
 		return inflater.inflate(R.layout.list, null);
 
@@ -47,7 +53,14 @@ public class BookMenuFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		getListView().setCacheColorHint(Color.TRANSPARENT) ;
+		//PaintDrawable sage = new PaintDrawable(R.drawable.divider_horiz);
+		//getListView().setDivider(new ColorDrawable(Color.parseColor("#7C8381"))) ;
+		//getListView().setDividerHeight(0);
 
+		image = new int[] { R.drawable.cat_1,
+                R.drawable.cat_2, R.drawable.cat_3,
+                R.drawable.cat_4};
 		/*
 		 * String[] birds = getResources().getStringArray(R.array.birds);
 		 * ArrayAdapter<String> colorAdapter = new ArrayAdapter<String>(
@@ -95,7 +108,7 @@ public class BookMenuFragment extends ListFragment {
 			Cursor cursor = db.query("category", null, null, null, null, null,
 					null);
 			if (cursor != null) {
-
+int i=0;
 				while (cursor.moveToNext()) {
 					LinkedHashMap<String, String> tran = new LinkedHashMap<String, String>();
 					tran.put("_id",
@@ -103,14 +116,18 @@ public class BookMenuFragment extends ListFragment {
 
 					tran.put("cat_name",
 							cursor.getString(cursor.getColumnIndex("cat_name")));
+					tran.put("cat_image",Integer.toString(image[i]));
 					listTrans.add(tran);
+					i++;
 
 				}
 				adapter = new SimpleAdapter(mContext, listTrans,
-						android.R.layout.simple_list_item_1,
-						new String[] { "cat_name", },
-						new int[] { android.R.id.text1 });
-				// adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						R.layout.menu_row,
+						new String[] { "cat_name","cat_image" },
+						new int[] { R.id.tvCategoryName ,R.id.ivMenuIcon});
+				
+		
+				 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 				setListAdapter(adapter);
 				;
 			}

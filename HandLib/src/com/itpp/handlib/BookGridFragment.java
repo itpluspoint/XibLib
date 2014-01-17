@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -61,6 +62,7 @@ public class BookGridFragment extends Fragment {
 		GridView gv = (GridView) inflater.inflate(R.layout.list_grid, null);
 		gv.setBackgroundResource(android.R.color.white);
 		gv.setAdapter(new GridAdapter());
+		gv.setBackgroundColor(Color.parseColor("#4a3826"));
 		gv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,

@@ -1,6 +1,5 @@
 package com.itpp.handlib;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +15,8 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 public class ResponsiveUIActivity extends SlidingFragmentActivity {
 
 	private Fragment mContent;
-public static String myCustTitle="My Library";
+	public static String myCustTitle = "My Library";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,9 +32,9 @@ public static String myCustTitle="My Library";
 					.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 			// show home as up so we can toggle
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			
-			//getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.logo));
-					
+
+			// getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.logo));
+
 		} else {
 			// add a dummy view
 			View v = new View(this);
@@ -71,18 +71,21 @@ public static String myCustTitle="My Library";
 		 * .setMessage("Nothing to display now..!!").show();
 		 */
 	}
-	public  void setCustomTitle(String title){
+
+	public void setCustomTitle(String title) {
 		getSupportActionBar().setTitle(title);
 	}
 
-	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			toggle();
-		//case R.id.menu_about:
-			
+			break;
+		case R.id.menu_about_sansar:
+			Intent intent = new Intent(this, AboutSansar.class);
+			startActivity(intent);
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -93,7 +96,6 @@ public static String myCustTitle="My Library";
 		getSupportFragmentManager().putFragment(outState, "mContent", mContent);
 	}
 
-	
 	public void switchContent(final Fragment fragment) {
 		mContent = fragment;
 		getSupportFragmentManager().beginTransaction()
@@ -110,10 +112,11 @@ public static String myCustTitle="My Library";
 		Intent intent = ReadBookActivity.newInstance(this, pos);
 		startActivity(intent);
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getSupportMenuInflater();
-	    inflater.inflate(R.menu.menu_book_grid, menu);
-	    return true;
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.menu_book_grid, menu);
+		return true;
 	}
 }

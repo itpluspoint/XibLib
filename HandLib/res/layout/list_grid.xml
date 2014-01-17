@@ -7,6 +7,6 @@
     android:horizontalSpacing="10dp"
     android:numColumns="@integer/num_cols"
     android:verticalSpacing="10dp" 
-    android:background="@drawable/bg_pot">
+    >
 
 </GridView>

@@ -904,6 +904,13 @@ containing a value of this type.
         /**  Minimum width of the search view text entry area. 
          */
         public static final int abs__search_view_text_min_width=0x7f07000b;
+        /** 
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    
+         */
+        public static final int activity_horizontal_margin=0x7f070012;
+        public static final int activity_vertical_margin=0x7f070013;
         public static final int list_padding=0x7f070010;
         public static final int shadow_width=0x7f070011;
         public static final int slidingmenu_offset=0x7f07000f;
@@ -1023,26 +1030,34 @@ containing a value of this type.
         public static final int abs__toast_frame=0x7f02006f;
         public static final int bg_land=0x7f020070;
         public static final int bg_pot=0x7f020071;
-        public static final int chandadhua_akash=0x7f020072;
-        public static final int custom_btn=0x7f020073;
-        public static final int ic_action_about=0x7f020074;
-        public static final int ic_launcher=0x7f020075;
-        public static final int item_normal=0x7f020076;
-        public static final int item_selected=0x7f020077;
-        public static final int jharapatra_ra_silalipi=0x7f020078;
-        public static final int jibanica=0x7f020079;
-        public static final int kabita=0x7f02007a;
-        public static final int logo=0x7f02007b;
-        public static final int magazines=0x7f02007c;
-        public static final int matiru_akash=0x7f02007d;
-        public static final int patha_asaranti=0x7f02007e;
-        public static final int purnahuti=0x7f02007f;
-        public static final int sansar_dec2013=0x7f020080;
-        public static final int sansar_nov2013=0x7f020081;
-        public static final int sansar_oct2013=0x7f020082;
-        public static final int sansar_sept2013=0x7f020083;
-        public static final int shadow=0x7f020084;
-        public static final int story=0x7f020085;
+        public static final int cat_1=0x7f020072;
+        public static final int cat_2=0x7f020073;
+        public static final int cat_3=0x7f020074;
+        public static final int cat_4=0x7f020075;
+        public static final int chandadhua_akash=0x7f020076;
+        public static final int custom_btn=0x7f020077;
+        public static final int divider_horiz=0x7f020078;
+        public static final int ic_action_about=0x7f020079;
+        public static final int ic_launcher=0x7f02007a;
+        public static final int ic_logo=0x7f02007b;
+        public static final int item_normal=0x7f02007c;
+        public static final int item_selected=0x7f02007d;
+        public static final int jharapatra_ra_silalipi=0x7f02007e;
+        public static final int jibanica=0x7f02007f;
+        public static final int kabita=0x7f020080;
+        public static final int logo=0x7f020081;
+        public static final int magazines=0x7f020082;
+        public static final int matiru_akash=0x7f020083;
+        public static final int op_01=0x7f020084;
+        public static final int op_about=0x7f020085;
+        public static final int patha_asaranti=0x7f020086;
+        public static final int purnahuti=0x7f020087;
+        public static final int sansar_dec2013=0x7f020088;
+        public static final int sansar_nov2013=0x7f020089;
+        public static final int sansar_oct2013=0x7f02008a;
+        public static final int sansar_sept2013=0x7f02008b;
+        public static final int shadow=0x7f02008c;
+        public static final int story=0x7f02008d;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f040025;
@@ -1084,31 +1099,35 @@ containing a value of this type.
         public static final int abs__textButton=0x7f040018;
         public static final int abs__title=0x7f040020;
         public static final int abs__up=0x7f04000b;
-        public static final int bDownload=0x7f04003a;
-        public static final int content_frame=0x7f04003c;
+        public static final int action_settings=0x7f040041;
+        public static final int bDownload=0x7f04003b;
+        public static final int content_frame=0x7f04003f;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f04002b;
         public static final int fullscreen=0x7f040013;
-        public static final int grid_item_img=0x7f040038;
+        public static final int grid_item_img=0x7f040039;
         public static final int homeAsUp=0x7f040006;
+        public static final int ivMenuIcon=0x7f04003d;
         public static final int left=0x7f040010;
         public static final int listMode=0x7f040002;
         public static final int margin=0x7f040012;
-        public static final int menu_about=0x7f04003f;
-        public static final int menu_frame=0x7f04003b;
-        public static final int menu_settings=0x7f04003e;
+        public static final int menu_about_sansar=0x7f040043;
+        public static final int menu_frame=0x7f04003c;
+        public static final int menu_settings=0x7f040042;
         public static final int normal=0x7f040001;
         public static final int right=0x7f040011;
         public static final int selected_view=0x7f040014;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
-        public static final int slidingmenumain=0x7f04003d;
+        public static final int slidingmenumain=0x7f040040;
         public static final int tabMode=0x7f040003;
-        public static final int tvMonth=0x7f040039;
-        public static final int tvNameOfTheBook=0x7f040037;
+        public static final int tvCategoryName=0x7f04003e;
+        public static final int tvMonth=0x7f04003a;
+        public static final int tvNameOfTheBook=0x7f040038;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
+        public static final int wvAbout=0x7f040037;
     }
     public static final class integer {
         public static final int abs__max_action_buttons=0x7f080000;
@@ -1136,19 +1155,22 @@ containing a value of this type.
         public static final int abs__search_dropdown_item_icons_2line=0x7f030012;
         public static final int abs__search_view=0x7f030013;
         public static final int abs__simple_dropdown_hint=0x7f030014;
-        public static final int activity_home=0x7f030015;
-        public static final int grid_item=0x7f030016;
-        public static final int list=0x7f030017;
-        public static final int list_grid=0x7f030018;
-        public static final int menu_frame=0x7f030019;
-        public static final int responsive_content_frame=0x7f03001a;
-        public static final int sherlock_spinner_dropdown_item=0x7f03001b;
-        public static final int sherlock_spinner_item=0x7f03001c;
-        public static final int slidingmenumain=0x7f03001d;
+        public static final int activity_about_sansar=0x7f030015;
+        public static final int activity_home=0x7f030016;
+        public static final int grid_item=0x7f030017;
+        public static final int list=0x7f030018;
+        public static final int list_grid=0x7f030019;
+        public static final int menu_frame=0x7f03001a;
+        public static final int menu_row=0x7f03001b;
+        public static final int responsive_content_frame=0x7f03001c;
+        public static final int sherlock_spinner_dropdown_item=0x7f03001d;
+        public static final int sherlock_spinner_item=0x7f03001e;
+        public static final int slidingmenumain=0x7f03001f;
     }
     public static final class menu {
-        public static final int activity_home=0x7f0c0000;
-        public static final int menu_book_grid=0x7f0c0001;
+        public static final int about_sansar=0x7f0c0000;
+        public static final int activity_home=0x7f0c0001;
+        public static final int menu_book_grid=0x7f0c0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1190,9 +1212,11 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abs__shareactionprovider_share_with_application=0x7f090007;
+        public static final int action_settings=0x7f090011;
         public static final int app_name=0x7f09000d;
         public static final int hello_world=0x7f09000e;
         public static final int menu_settings=0x7f09000f;
+        public static final int title_activity_about_sansar=0x7f090010;
     }
     public static final class style {
         /** 

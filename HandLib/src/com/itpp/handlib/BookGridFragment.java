@@ -19,6 +19,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,6 +44,9 @@ public class BookGridFragment extends Fragment {
 	Button btn_download;
 	Button btn_read;
 	int[] image;
+	GridView gv;
+	
+	LayoutInflater myInflater;
 
 	public BookGridFragment() {
 	}
@@ -61,38 +65,10 @@ public class BookGridFragment extends Fragment {
 		mImgRes = imgs.getResourceId(mPos, -1);
 
 		setImageResorces(mPos);
+		myInflater=inflater;
+		
+		refreshAdapter(myInflater);
 
-		GridView gv = (GridView) inflater.inflate(R.layout.list_grid, null);
-		gv.setBackgroundResource(android.R.color.white);
-		gv.setAdapter(new GridAdapter());
-		gv.setBackgroundColor(Color.parseColor("#4a3826"));
-		gv.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				if (getActivity() == null)
-					return;
-				Map<String, String> tran = listTrans.get(position);
-
-				_id = tran.get("_id");
-				if (!Utility.isBookDownloaded(tran.get("loc_url"))) {
-					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"),tran.get("book_name")+"\n"+tran.get("book_abbr"));
-
-					// updateDataBase();
-				} else {
-					File file = new File(tran.get("loc_url"));
-					Intent target = new Intent(Intent.ACTION_VIEW);
-					target.setDataAndType(Uri.fromFile(file), "application/pdf");
-					target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-
-					Intent intent = Intent.createChooser(target, "Open File");
-					try {
-						startActivity(intent);
-					} catch (ActivityNotFoundException e) {
-					}
-				}
-			}
-		});
 		/*
 		 * gv.setOnItemLongClickListener(new OnItemLongClickListener() {
 		 * 
@@ -110,6 +86,47 @@ public class BookGridFragment extends Fragment {
 		 */
 
 		return gv;
+	}
+
+	private void refreshAdapter(LayoutInflater inflater) {
+		// TODO Auto-generated method stub
+
+		
+		gv = (GridView) inflater.inflate(R.layout.list_grid, null);
+		gv.setBackgroundResource(android.R.color.white);
+		gv.setBackgroundColor(Color.parseColor("#4a3826"));
+		gv.setAdapter(new GridAdapter());
+		gv.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				if (getActivity() == null)
+					return;
+				Map<String, String> tran = listTrans.get(position);
+
+				_id = tran.get("_id");
+				if (!Utility.isBookDownloaded(tran.get("loc_url"))) {
+					showDownloadAlert(
+							tran.get("rem_url"),
+							tran.get("loc_url"),
+							tran.get("book_name") + "\n"
+									+ tran.get("book_abbr"));
+
+					// updateDataBase();
+				} else {
+					File file = new File(tran.get("loc_url"));
+					Intent target = new Intent(Intent.ACTION_VIEW);
+					target.setDataAndType(Uri.fromFile(file), "application/pdf");
+					target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+					Intent intent = Intent.createChooser(target, "Open File");
+					try {
+						startActivity(intent);
+					} catch (ActivityNotFoundException e) {
+					}
+				}
+			}
+		});
 	}
 
 	private void setImageResorces(int mPos) {
@@ -139,15 +156,16 @@ public class BookGridFragment extends Fragment {
 
 	}
 
-	private void showDownloadAlert(String rem_url, String loc_url ,String  title ) {
+	private void showDownloadAlert(String rem_url, String loc_url, String title) {
 		// TODO Auto-generated method stub
 
-		if(rem_url.equalsIgnoreCase("http://odishapublication.com/Sansar/Sansar_Feb2014.pdf")){
-			Toast.makeText(getActivity().getApplicationContext(), "Comming Soon...", Toast.LENGTH_SHORT).show();
-			return;	
+		if (rem_url
+				.equalsIgnoreCase("http://odishapublication.com/Sansar/Sansar_Feb2014.pdf")) {
+			Toast.makeText(getActivity().getApplicationContext(),
+					"Comming Soon...", Toast.LENGTH_SHORT).show();
+			return;
 		}
-		
-		
+
 		final String mLoc_url = loc_url;
 		final String mRem_url = rem_url;
 		// TODO Auto-generated method stub
@@ -163,9 +181,13 @@ public class BookGridFragment extends Fragment {
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								if (isNetworkAvailable()) {
-									new Utility(getActivity(), mRem_url,
-											mLoc_url).execute();
-									btn_download.setEnabled(false);
+									Utility download = new Utility(
+											getActivity(), mRem_url, mLoc_url);
+									download.execute();
+								/*	if (download.getStatus() == AsyncTask.Status.FINISHED) {
+										Toast.makeText(getActivity(), "Dowanload Finish", Toast.LENGTH_SHORT).show()
+;									}*/
+
 								} else {
 									Toast.makeText(getActivity(),
 											"Error in Network Connectivity.!!",
@@ -274,7 +296,11 @@ public class BookGridFragment extends Fragment {
 
 					Map<String, String> tran = listTrans.get(_position);
 
-					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"),tran.get("book_name")+"\n"+tran.get("book_abbr"));
+					showDownloadAlert(
+							tran.get("rem_url"),
+							tran.get("loc_url"),
+							tran.get("book_name") + "\n"
+									+ tran.get("book_abbr"));
 
 					updateDataBase();
 				}

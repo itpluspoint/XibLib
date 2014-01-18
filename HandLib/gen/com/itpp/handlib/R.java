@@ -1040,39 +1040,42 @@ containing a value of this type.
         public static final int chandadhua_akash=0x7f020079;
         public static final int custom_btn=0x7f02007a;
         public static final int custom_btn_download=0x7f02007b;
-        public static final int divider_horiz=0x7f02007c;
-        public static final int ic_action_about=0x7f02007d;
-        public static final int ic_action_collection=0x7f02007e;
-        public static final int ic_action_email=0x7f02007f;
-        public static final int ic_action_help=0x7f020080;
-        public static final int ic_action_labels=0x7f020081;
-        public static final int ic_action_settings=0x7f020082;
-        public static final int ic_drawer=0x7f020083;
-        public static final int ic_launcher=0x7f020084;
-        public static final int ic_logo=0x7f020085;
-        public static final int item_normal=0x7f020086;
-        public static final int item_normal_download=0x7f020087;
-        public static final int item_selected=0x7f020088;
-        public static final int item_selected_download=0x7f020089;
-        public static final int jharapatra_ra_silalipi=0x7f02008a;
-        public static final int jibanica=0x7f02008b;
-        public static final int kabita=0x7f02008c;
-        public static final int logo=0x7f02008d;
-        public static final int magazines=0x7f02008e;
-        public static final int matiru_akash=0x7f02008f;
-        public static final int menu_01=0x7f020090;
-        public static final int op_01=0x7f020091;
-        public static final int op_about=0x7f020092;
-        public static final int op_logo=0x7f020093;
-        public static final int patha_asaranti=0x7f020094;
-        public static final int purnahuti=0x7f020095;
-        public static final int sansar_dec2013=0x7f020096;
-        public static final int sansar_jan2014=0x7f020097;
-        public static final int sansar_nov2013=0x7f020098;
-        public static final int sansar_oct2013=0x7f020099;
-        public static final int sansar_sept2013=0x7f02009a;
-        public static final int shadow=0x7f02009b;
-        public static final int story=0x7f02009c;
+        public static final int custom_btn_read=0x7f02007c;
+        public static final int divider_horiz=0x7f02007d;
+        public static final int ic_action_about=0x7f02007e;
+        public static final int ic_action_collection=0x7f02007f;
+        public static final int ic_action_email=0x7f020080;
+        public static final int ic_action_help=0x7f020081;
+        public static final int ic_action_labels=0x7f020082;
+        public static final int ic_action_settings=0x7f020083;
+        public static final int ic_action_view_as_list=0x7f020084;
+        public static final int ic_drawer=0x7f020085;
+        public static final int ic_drawer_books=0x7f020086;
+        public static final int ic_launcher=0x7f020087;
+        public static final int ic_logo=0x7f020088;
+        public static final int item_normal=0x7f020089;
+        public static final int item_normal_download=0x7f02008a;
+        public static final int item_selected=0x7f02008b;
+        public static final int item_selected_download=0x7f02008c;
+        public static final int jharapatra_ra_silalipi=0x7f02008d;
+        public static final int jibanica=0x7f02008e;
+        public static final int kabita=0x7f02008f;
+        public static final int logo=0x7f020090;
+        public static final int magazines=0x7f020091;
+        public static final int matiru_akash=0x7f020092;
+        public static final int menu_01=0x7f020093;
+        public static final int op_01=0x7f020094;
+        public static final int op_about=0x7f020095;
+        public static final int op_logo=0x7f020096;
+        public static final int patha_asaranti=0x7f020097;
+        public static final int purnahuti=0x7f020098;
+        public static final int sansar_dec2013=0x7f020099;
+        public static final int sansar_jan2014=0x7f02009a;
+        public static final int sansar_nov2013=0x7f02009b;
+        public static final int sansar_oct2013=0x7f02009c;
+        public static final int sansar_sept2013=0x7f02009d;
+        public static final int shadow=0x7f02009e;
+        public static final int story=0x7f02009f;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f040025;
@@ -1235,9 +1238,6 @@ containing a value of this type.
         public static final int title_activity_about_sansar=0x7f090010;
     }
     public static final class style {
-        /**  API 11 theme customizations can go here. 
- API 14 theme customizations can go here. 
-         */
         public static final int AppBaseTheme=0x7f0a0059;
         public static final int AppCustTheme=0x7f0a005b;
         public static final int AppTheme=0x7f0a005a;

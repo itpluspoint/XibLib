@@ -76,7 +76,7 @@ public class BookGridFragment extends Fragment {
 
 				_id = tran.get("_id");
 				if (!Utility.isBookDownloaded(tran.get("loc_url"))) {
-					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));
+					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"),tran.get("book_name")+"\n"+tran.get("book_abbr"));
 
 					// updateDataBase();
 				} else {
@@ -139,9 +139,15 @@ public class BookGridFragment extends Fragment {
 
 	}
 
-	private void showDownloadAlert(String rem_url, String loc_url) {
+	private void showDownloadAlert(String rem_url, String loc_url ,String  title ) {
 		// TODO Auto-generated method stub
 
+		if(rem_url.equalsIgnoreCase("http://odishapublication.com/Sansar/Sansar_Feb2014.pdf")){
+			Toast.makeText(getActivity().getApplicationContext(), "Comming Soon...", Toast.LENGTH_SHORT).show();
+			return;	
+		}
+		
+		
 		final String mLoc_url = loc_url;
 		final String mRem_url = rem_url;
 		// TODO Auto-generated method stub
@@ -149,8 +155,8 @@ public class BookGridFragment extends Fragment {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-		builder.setTitle("Not Available in your self .");
-		builder.setIcon(R.drawable.ic_launcher);
+		builder.setTitle(title);
+		builder.setIcon(R.drawable.ic_logo);
 		builder.setMessage("Downlod from online Library?")
 				.setCancelable(false)
 				.setPositiveButton("Yes",
@@ -268,7 +274,7 @@ public class BookGridFragment extends Fragment {
 
 					Map<String, String> tran = listTrans.get(_position);
 
-					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));
+					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"),tran.get("book_name")+"\n"+tran.get("book_abbr"));
 
 					updateDataBase();
 				}

@@ -13,6 +13,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 public class Utility extends AsyncTask<String, String, String> {
 
@@ -88,7 +89,7 @@ public class Utility extends AsyncTask<String, String, String> {
 							+ " sec");
 
 		} catch (IOException e) {
-			Log.d("DownloadManager", "Error: " + e);
+			Toast.makeText(mContext, "Downloaded Error...", Toast.LENGTH_LONG).show();
 		}
 
 		return null;
@@ -100,6 +101,7 @@ public class Utility extends AsyncTask<String, String, String> {
 		super.onPostExecute(result);
 		try {
 			pDialog.dismiss();
+			Toast.makeText(mContext, "Book Downloaded...", Toast.LENGTH_LONG).show();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

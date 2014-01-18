@@ -236,17 +236,25 @@ public class BookGridFragment extends Fragment {
 					.findViewById(R.id.grid_item_img);
 			TextView first_line = (TextView) convertView
 					.findViewById(R.id.tvNameOfTheBook);
+
 			TextView sec_line = (TextView) convertView
 					.findViewById(R.id.tvMonth);
+			if (mPos == 0) {
+				sec_line.setVisibility(View.VISIBLE);
+			} else {
+				sec_line.setVisibility(View.GONE);
+			}
 			img.setImageResource(image[position]);
 			first_line.setText(tran.get("book_name"));
 			sec_line.setText(tran.get("book_abbr"));
 			btn_download = (Button) convertView.findViewById(R.id.bDownload);
 			btn_read = (Button) convertView.findViewById(R.id.bRead);
-			btn_read.setEnabled(Utility.isBookDownloaded(tran.get("loc_url")));
-			// btn_download.setVisibility(Utility.isBookDownloaded(tran.get("loc_url"))?View.GONE:View.VISIBLE);
-			btn_download.setEnabled(!Utility.isBookDownloaded(tran
-					.get("loc_url")));
+
+			btn_read.setVisibility(!Utility.isBookDownloaded(tran
+					.get("loc_url")) ? View.GONE : View.VISIBLE);
+			btn_download.setVisibility(Utility.isBookDownloaded(tran
+					.get("loc_url")) ? View.GONE : View.VISIBLE);
+			// btn_download.setEnabled(!Utility.isBookDownloaded(tran.get("loc_url")));
 
 			btn_download.setOnClickListener(new OnClickListener() {
 
@@ -294,7 +302,6 @@ public class BookGridFragment extends Fragment {
 			});
 			return convertView;
 		}
-
 	}
 
 	private void getCategoryList() {

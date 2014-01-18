@@ -124,7 +124,7 @@ public class ResponsiveUIActivity extends SlidingFragmentActivity {
 		}, 50);
 	}
 
-	public void onBirdPressed(int pos) {
+	public void onBookPressed(int pos) {
 		Intent intent = ReadBookActivity.newInstance(this, pos);
 		startActivity(intent);
 	}

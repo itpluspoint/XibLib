@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ "rem_url " + " TEXT)";
 
 		String insert_into_category_row_i = "insert into " + "category  "
-				+ " values( null," + "\'Mazgines\', " + "\'Magzines\') ";
+				+ " values( null," + "\'Magzines\', " + "\'Magzines\') ";
 		String insert_into_category_row_ii = "insert into " + "category  "
 				+ " values( null," + "\'Kabita\', " + "\'Kabita\') ";
 		String insert_into_category_row_iii = "insert into " + "category  "
@@ -118,7 +118,6 @@ public class DBHelper extends SQLiteOpenHelper {
 			database.execSQL(insert_into_books_uc_ii);
 			database.execSQL(insert_into_books_i);
 			database.execSQL(insert_into_books_ii);
-			database.execSQL(insert_into_books_iii);
 			database.execSQL(insert_into_books_iii);
 			database.execSQL(insert_into_books_iv);
 

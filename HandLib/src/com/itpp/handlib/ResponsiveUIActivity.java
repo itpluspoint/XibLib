@@ -15,7 +15,7 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 public class ResponsiveUIActivity extends SlidingFragmentActivity {
 
 	private Fragment mContent;
-	public static String myCustTitle = "My Library";
+	public static String myCustTitle = "Odisha Publication";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class ResponsiveUIActivity extends SlidingFragmentActivity {
 					.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 			// show home as up so we can toggle
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+			//getSupportActionBar().setLogo(R.drawable.op_logo);
 			// getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.logo));
 
 		} else {
@@ -63,6 +63,7 @@ public class ResponsiveUIActivity extends SlidingFragmentActivity {
 		sm.setShadowDrawable(R.drawable.shadow);
 		sm.setBehindScrollScale(0.25f);
 		sm.setFadeDegree(0.25f);
+		
 
 		// show the explanation dialog
 		/*
@@ -74,6 +75,19 @@ public class ResponsiveUIActivity extends SlidingFragmentActivity {
 
 	public void setCustomTitle(String title) {
 		getSupportActionBar().setTitle(title);
+		invalidateOptionsMenu();
+		
+	}
+
+	
+
+	/* (non-Javadoc)
+	 * @see com.actionbarsherlock.app.SherlockFragmentActivity#invalidateOptionsMenu()
+	 */
+	@Override
+	public void invalidateOptionsMenu() {
+		// TODO Auto-generated method stub
+		super.invalidateOptionsMenu();
 	}
 
 	@Override
@@ -83,7 +97,9 @@ public class ResponsiveUIActivity extends SlidingFragmentActivity {
 			toggle();
 			break;
 		case R.id.menu_about_sansar:
-			Intent intent = new Intent(this, AboutSansar.class);
+			
+			Intent intent = new Intent(this, About.class);
+			intent.putExtra("about_of", 0);
 			startActivity(intent);
 			break;
 		}
@@ -119,4 +135,21 @@ public class ResponsiveUIActivity extends SlidingFragmentActivity {
 		inflater.inflate(R.menu.menu_book_grid, menu);
 		return true;
 	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		MenuItem item = menu.findItem(R.id.menu_about_sansar);
+		
+		
+		
+		if(getSupportActionBar().getTitle().toString().equalsIgnoreCase("Magzines")){
+			item.setVisible(true);
+		}else{
+			item.setVisible(false);
+		}
+		return super.onPrepareOptionsMenu(menu);
+	}
+	
+	
 }

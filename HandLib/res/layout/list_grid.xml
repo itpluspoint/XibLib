@@ -6,7 +6,7 @@
     android:drawSelectorOnTop="true"
     android:horizontalSpacing="10dp"
     android:numColumns="@integer/num_cols"
-    android:verticalSpacing="10dp" 
+    android:verticalSpacing="5dp" 
     >
 
 </GridView>

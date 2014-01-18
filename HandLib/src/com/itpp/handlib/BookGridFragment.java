@@ -28,7 +28,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -42,6 +41,8 @@ public class BookGridFragment extends Fragment {
 	private int mImgRes;
 	String _id = null;
 	Button btn_download;
+	Button btn_read;
+	int[] image;
 
 	public BookGridFragment() {
 	}
@@ -59,6 +60,8 @@ public class BookGridFragment extends Fragment {
 		TypedArray imgs = getResources().obtainTypedArray(R.array.birds_img);
 		mImgRes = imgs.getResourceId(mPos, -1);
 
+		setImageResorces(mPos);
+
 		GridView gv = (GridView) inflater.inflate(R.layout.list_grid, null);
 		gv.setBackgroundResource(android.R.color.white);
 		gv.setAdapter(new GridAdapter());
@@ -72,10 +75,10 @@ public class BookGridFragment extends Fragment {
 				Map<String, String> tran = listTrans.get(position);
 
 				_id = tran.get("_id");
-				if (tran.get("book_avl").equals("0")) {
+				if (!Utility.isBookDownloaded(tran.get("loc_url"))) {
 					showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));
 
-					updateDataBase();
+					// updateDataBase();
 				} else {
 					File file = new File(tran.get("loc_url"));
 					Intent target = new Intent(Intent.ACTION_VIEW);
@@ -90,24 +93,50 @@ public class BookGridFragment extends Fragment {
 				}
 			}
 		});
-		gv.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-			public boolean onItemLongClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				if (getActivity() == null)
-					return false;
-				Map<String, String> tran = listTrans.get(position);
-
-				showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));
-
-				updateDataBase();
-
-				return false;
-			}
-
-		});
+		/*
+		 * gv.setOnItemLongClickListener(new OnItemLongClickListener() {
+		 * 
+		 * public boolean onItemLongClick(AdapterView<?> parent, View view, int
+		 * position, long id) { if (getActivity() == null) return false;
+		 * Map<String, String> tran = listTrans.get(position);
+		 * 
+		 * showDownloadAlert(tran.get("rem_url"), tran.get("loc_url"));
+		 * 
+		 * updateDataBase();
+		 * 
+		 * return false; }
+		 * 
+		 * });
+		 */
 
 		return gv;
+	}
+
+	private void setImageResorces(int mPos) {
+		// TODO Auto-generated method stub
+		switch (mPos) {
+
+		case 0:
+			image = new int[] { R.drawable.sansar_jan2014,
+					R.drawable.sansar_jan2014, R.drawable.sansar_dec2013,
+					R.drawable.sansar_nov2013, R.drawable.sansar_oct2013,
+					R.drawable.sansar_sept2013 };
+			break;
+		case 1:
+			image = new int[] { R.drawable.jharapatra_ra_silalipi,
+					R.drawable.chandadhua_akash };
+			break;
+		case 2:
+			image = new int[] { R.drawable.story };
+			break;
+		case 3:
+			image = new int[] { R.drawable.matiru_akash,
+					R.drawable.patha_asaranti };
+			break;
+		default:
+			break;
+		}
+
 	}
 
 	private void showDownloadAlert(String rem_url, String loc_url) {
@@ -209,10 +238,12 @@ public class BookGridFragment extends Fragment {
 					.findViewById(R.id.tvNameOfTheBook);
 			TextView sec_line = (TextView) convertView
 					.findViewById(R.id.tvMonth);
-			img.setImageResource(mImgRes);
+			img.setImageResource(image[position]);
 			first_line.setText(tran.get("book_name"));
 			sec_line.setText(tran.get("book_abbr"));
 			btn_download = (Button) convertView.findViewById(R.id.bDownload);
+			btn_read = (Button) convertView.findViewById(R.id.bRead);
+			btn_read.setEnabled(Utility.isBookDownloaded(tran.get("loc_url")));
 			// btn_download.setVisibility(Utility.isBookDownloaded(tran.get("loc_url"))?View.GONE:View.VISIBLE);
 			btn_download.setEnabled(!Utility.isBookDownloaded(tran
 					.get("loc_url")));
@@ -236,6 +267,31 @@ public class BookGridFragment extends Fragment {
 
 			});
 
+			btn_read.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					/*
+					 * Toast.makeText(getActivity(), "Item Clicked is" +
+					 * _position, Toast.LENGTH_LONG) .show();
+					 */
+
+					Map<String, String> tran = listTrans.get(_position);
+					File file = new File(tran.get("loc_url"));
+					Intent target = new Intent(Intent.ACTION_VIEW);
+					target.setDataAndType(Uri.fromFile(file), "application/pdf");
+					target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+					Intent intent = Intent.createChooser(target, "Open File");
+					try {
+						startActivity(intent);
+					} catch (ActivityNotFoundException e) {
+					}
+
+				}
+
+			});
 			return convertView;
 		}
 

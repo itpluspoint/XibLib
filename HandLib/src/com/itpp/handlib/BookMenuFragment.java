@@ -5,14 +5,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.itpp.databases.DBHelper;
-import com.itpp.handlib.R.drawable;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -53,7 +51,10 @@ public class BookMenuFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		
 		getListView().setCacheColorHint(Color.TRANSPARENT) ;
+	//   	setListShownNoAnimation(false);
+		
 		//PaintDrawable sage = new PaintDrawable(R.drawable.divider_horiz);
 		//getListView().setDivider(new ColorDrawable(Color.parseColor("#7C8381"))) ;
 		//getListView().setDividerHeight(0);
@@ -70,19 +71,30 @@ public class BookMenuFragment extends ListFragment {
 		getCategoryList();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.ListFragment#setListShownNoAnimation(boolean)
+	 */
+	 
+
 	@Override
 	public void onListItemClick(ListView lv, View v, int position, long id) {
 
-	/*	setSelection(position);
-		lv.setItemChecked(position, true);*/
+	/*	setSelection(position);*/
+		lv.setItemChecked(position, true);
 		Map<String, String> tran = listTrans.get(position);
 		
 		title=tran.get("cat_name");
+		
+		if(position==4){
+			Intent intent = new Intent(mContext, About.class);
+			intent.putExtra("about_of", 1);
+			startActivity(intent);
+		}else{
 		Fragment newContent = new BookGridFragment(position);
 		
 		if (newContent != null)
 			switchFragment(newContent);
-		
+		}
 	}
 
 	// the meat of switching the above fragment
@@ -116,11 +128,44 @@ int i=0;
 
 					tran.put("cat_name",
 							cursor.getString(cursor.getColumnIndex("cat_name")));
-					tran.put("cat_image",Integer.toString(image[i]));
+					tran.put("cat_image",Integer.toString(R.drawable.ic_action_labels));
 					listTrans.add(tran);
 					i++;
 
 				}
+				
+				LinkedHashMap<String, String> tran = new LinkedHashMap<String, String>();
+				tran.put("_id",
+						"_1");
+
+				tran.put("cat_name",
+						"About Us");
+				tran.put("cat_image",Integer.toString(R.drawable.ic_action_about));
+				listTrans.add(tran);
+				
+				
+				
+				LinkedHashMap<String, String> tran1 = new LinkedHashMap<String, String>();
+				tran1.put("_id",
+						"_1");
+
+				tran1.put("cat_name",
+						"Settings");
+				tran1.put("cat_image",Integer.toString(R.drawable.ic_action_settings));
+				listTrans.add(tran1);
+				
+				
+				LinkedHashMap<String, String> tran2 = new LinkedHashMap<String, String>();
+				tran2.put("_id",
+						"_1");
+
+				tran2.put("cat_name",
+						"Help");
+				tran2.put("cat_image",Integer.toString(R.drawable.ic_action_help));
+				listTrans.add(tran2);
+				
+				
+				
 				adapter = new SimpleAdapter(mContext, listTrans,
 						R.layout.menu_row,
 						new String[] { "cat_name","cat_image" },

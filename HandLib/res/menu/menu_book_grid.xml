@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/menu_about_sansar"
-        android:icon="@drawable/op_about"
+        android:icon="@drawable/ic_action_about"
         android:orderInCategory="100"
         android:showAsAction="always"
         android:title="About"

@@ -3,16 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="#1C1C1C">
+    >
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/op_01"
-        android:gravity="center"
+        android:layout_height="48dp"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
         android:text="Category"
         android:textColor="#ffffff"
-        android:textSize="20dp" >
+        android:textSize="20dp"
+        android:background="@drawable/ab_bg" >
     </TextView>
 
     <ListView
@@ -21,6 +22,6 @@
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/list_padding"
         android:paddingRight="@dimen/list_padding" 
-        android:background="#1C1C1C"/>
+         android:background="#5b6060"/>
 
 </LinearLayout>
